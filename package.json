@@ -1,6 +1,6 @@
 {
-  "name": "helloworld-cloud",
-  "version": "0.2.0",
+  "name": "mongo-express-service",
+  "version": "0.0.1",
   "dependencies": {
     "body-parser": "~1.0.2",
     "cors": "~2.2.0",

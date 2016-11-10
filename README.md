@@ -1,25 +1,5 @@
-# FeedHenry Hello World MBaaS Server
+# Mongo Express Service
 
-This is a blank 'hello world' FeedHenry MBaaS. Use it as a starting point for building your APIs. 
+This is a service for RHMAP which allows to manage your mongo db database through Mongo Express
 
-# Group Hello World API
-
-# hello [/hello]
-
-'Hello world' endpoint.
-
-## hello [POST] 
-
-'Hello world' endpoint.
-
-+ Request (application/json)
-    + Body
-            {
-              "hello": "world"
-            }
-
-+ Response 200 (application/json)
-    + Body
-            {
-              "msg": "Hello world"
-            }
+# Mongo Express GUI will be available through [/]

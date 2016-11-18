@@ -4,7 +4,7 @@ var mongo;
 var url = require('url');
 
 if (typeof process.env.FH_MONGODB_CONN_URL === 'string') {
-  var mongoConnection = url.parse(process.env.FH_MONGODB_CONN_URL);
+  var mongoConnection = url.parse(process.env.MONGO_CONN_URL_APP || process.env.FH_MONGODB_CONN_URL);
   process.env.ME_CONFIG_MONGODB_SERVER  = mongoConnection.hostname;
   process.env.ME_CONFIG_MONGODB_PORT    = mongoConnection.port;
   process.env.ME_CONFIG_MONGODB_AUTH_DATABASE  = mongoConnection.path.substring(1);

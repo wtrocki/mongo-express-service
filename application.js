@@ -24,16 +24,11 @@ app.use(express.static(__dirname + '/public'));
 // Note: important that this is added just before your own Routes
 app.use(mbaasExpress.fhmiddleware());
 
-function checkEnvVar(req, res, next) {
-	if (typeof process.env.MONGO_CONN_URL_APP !== 'string') {
-		res.redirect('/mongo-url-error.hthml');
-	} else {
-		return next();
-	}
+if (typeof process.env.MONGO_CONN_URL_APP !== 'string') {
+	app.use('/', function(req, res){res.sendfile('/mongo-url-error.html', {root: './public'})});
+} else {
+    app.use('/', mongo_express(mongo_express_config));
 }
-
-
-app.use('/', checkEnvVar, mongo_express(mongo_express_config));
 
 // Important that this is last!
 app.use(mbaasExpress.errorHandler());

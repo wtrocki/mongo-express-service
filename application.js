@@ -19,12 +19,21 @@ app.use('/sys', mbaasExpress.sys(securableEndpoints));
 app.use('/mbaas', mbaasExpress.mbaas);
 
 // allow serving of static files from the public directory
-//app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public'));
 
 // Note: important that this is added just before your own Routes
 app.use(mbaasExpress.fhmiddleware());
 
-app.use('/', mongo_express(mongo_express_config));
+function checkEnvVar(req, res, next) {
+	if (typeof process.env.MONGO_CONN_URL_APP !== 'string') {
+		res.redirect('/mongo-url-error.hthml');
+	} else {
+		return next();
+	}
+}
+
+
+app.use('/', checkEnvVar, mongo_express(mongo_express_config));
 
 // Important that this is last!
 app.use(mbaasExpress.errorHandler());

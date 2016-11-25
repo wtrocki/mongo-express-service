@@ -25,9 +25,9 @@ app.use(express.static(__dirname + '/public'));
 app.use(mbaasExpress.fhmiddleware());
 
 if (typeof process.env.MONGO_CONN_URL_APP !== 'string') {
-	app.use('/', function(req, res){res.sendfile('/mongo-url-error.html', {root: './public'})});
+  app.use('/', function(req, res){res.sendfile('/mongo-url-error.html', {root: './public'})});
 } else {
-    app.use('/', mongo_express(mongo_express_config));
+  app.use('/', mongo_express(mongo_express_config));
 }
 
 // Important that this is last!
